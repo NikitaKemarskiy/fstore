@@ -9,6 +9,7 @@ PREFIX = /usr/local
 BIN = ./bin
 OBJ = ./obj
 SRC = ./src
+FILES = ./files
 INCLUDE = ./include
 
 #Default target
@@ -35,12 +36,14 @@ install:
 	install $(SRC)/main.cpp $(PREFIX)/src/$(NAME)/
 	install $(SRC)/parse.cpp $(PREFIX)/src/$(NAME)/
 	install $(SRC)/storage.cpp $(PREFIX)/src/$(NAME)/
+	install $(FILES)/help.txt $(PREFIX)/share/$(NAME)/
 	install $(INCLUDE)/parse.h $(PREFIX)/include/$(NAME)/
 	install $(INCLUDE)/storage.h $(PREFIX)/include/$(NAME)/
 
 #Uninstallation
 uninstall:
 	rm -f $(PREFIX)/bin/$(NAME)
+	rm -f $(PREFIX)/share/help.txt
 	rm -rf $(PREFIX)/src/$(NAME)
 	rm -rf $(PREFIX)/share/$(NAME)
 	rm -rf $(PREFIX)/include/$(NAME)

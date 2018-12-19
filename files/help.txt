@@ -1,0 +1,7 @@
+Usage: fstore [OPTION]... [FILE]...
+The FILE should be located in your current directory
+
+Mandatory arguments to long options are mandatory for short options too.
+  -s, --save                  save your file into the storage
+  -g, --get                   get your file from the storage to your current directory
+  -h, --help                  print help information
