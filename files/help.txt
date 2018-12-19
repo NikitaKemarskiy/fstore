@@ -1,5 +1,5 @@
 Usage: fstore [OPTION]... [FILE]...
-The FILE should be located in your current directory
+The FILE should be located in your current working directory
 
 Mandatory arguments to long options are mandatory for short options too.
   -s, --save                  save your file into the storage
