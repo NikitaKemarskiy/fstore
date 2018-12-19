@@ -48,17 +48,17 @@ uninstall:
 #Assembling main.cpp file target
 $(OBJ)/main.o: $(SRC)/main.cpp
 	mkdir -p $(OBJ)
-	$(CXX) -c $(SRC)/main.cpp -o $(OBJ)/main.o
+	$(CXX) -c $(SRC)/main.cpp $(CXXFLAGS) -o $(OBJ)/main.o
 
 #Assembling parse.cpp file target
 $(OBJ)/parse.o: $(SRC)/parse.cpp
 	mkdir -p $(OBJ)
-	$(CXX) -c $(SRC)/parse.cpp -o $(OBJ)/parse.o
+	$(CXX) -c $(SRC)/parse.cpp $(CXXFLAGS) -o $(OBJ)/parse.o
 
 #Assembling storage.cpp file target
 $(OBJ)/storage.o: $(SRC)/storage.cpp
 	mkdir -p $(OBJ)
-	$(CXX) -c $(SRC)/storage.cpp -o $(OBJ)/storage.o
+	$(CXX) -c $(SRC)/storage.cpp $(CXXFLAGS) -o $(OBJ)/storage.o
 
 #Linking from object files target
 $(BIN)/fstore: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o
