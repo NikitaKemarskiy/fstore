@@ -13,14 +13,14 @@ FILES = ./files
 INCLUDE = ./include
 
 #Default target
-all: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(BIN)/fstore
+all: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(OBJ)/path.o $(BIN)/fstore
 
 #Clean target
 clean:
 	rm -f $(OBJ)/*.o
 
 #Assembling
-assemble: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o
+assemble: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(OBJ)/path.o
 
 #Installation
 install:
@@ -36,9 +36,11 @@ install:
 	install $(SRC)/main.cpp $(PREFIX)/src/$(NAME)/
 	install $(SRC)/parse.cpp $(PREFIX)/src/$(NAME)/
 	install $(SRC)/storage.cpp $(PREFIX)/src/$(NAME)/
+	install $(SRC)/path.cpp $(PREFIX)/src/$(NAME)/
 	install $(FILES)/help.txt $(PREFIX)/share/$(NAME)/
 	install $(INCLUDE)/parse.h $(PREFIX)/include/$(NAME)/
 	install $(INCLUDE)/storage.h $(PREFIX)/include/$(NAME)/
+	install $(INCLUDE)/path.h $(PREFIX)/include/$(NAME)/
 
 #Uninstallation
 uninstall:
@@ -63,7 +65,12 @@ $(OBJ)/storage.o: $(SRC)/storage.cpp
 	mkdir -p $(OBJ)
 	$(CXX) -c $(SRC)/storage.cpp $(CXXFLAGS) -o $(OBJ)/storage.o
 
+#Assembling path.cpp file target
+$(OBJ)/path.o: $(SRC)/path.cpp
+	mkdir -p $(OBJ)
+	$(CXX) -c $(SRC)/path.cpp $(CXXFLAGS) -o $(OBJ)/path.o
+
 #Linking from object files target
-$(BIN)/fstore: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o
+$(BIN)/fstore: $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(OBJ)/path.o
 	mkdir -p $(BIN)
-	$(CXX) $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(CXXFLAGS) -o $(BIN)/fstore
+	$(CXX) $(OBJ)/main.o $(OBJ)/parse.o $(OBJ)/storage.o $(OBJ)/path.o $(CXXFLAGS) -o $(BIN)/fstore

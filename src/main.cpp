@@ -3,6 +3,7 @@
 #include <climits>
 #include <unistd.h>
 #include "parse.h"
+#include "path.h"
 #include "storage.h"
 using namespace std;
 
