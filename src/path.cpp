@@ -34,15 +34,19 @@ void deleteLastSegment(char* newPath, char* oldPath) { // Function that deletes 
 }
 
 void addSegment(char* oldPath, char* segment) { // Function that adds a segment to the path
-	int pathLength = strlen(oldPath);
+	int length = strlen(oldPath);
 	if (segment[0] != '/') { // There's no slash at the beginning of the segment
-		if (oldPath[length - 1] != '/') { // There's no slash at the end of the path
-			strcat(oldPath, "/"); // Add it
+		if (oldPath[length - 1] != '/') { // There's no slash at the end of the path and no slash at the beginning of the segment
+			strcat(oldPath, "/");
+			strcat(oldPath, segment);
+		} else { // There's a slash at the end of the path and no slash at the beginning of the segment
+			strcat(oldPath, segment);
 		}
 	} else { // There's a slash at the beginning of the segment
-		if (oldPath[length - 1] == '/') { // There's a slash at the end of the path;
-			// Remove slash from the path
+		if (oldPath[length - 1] == '/') { // There's a slash at the end of the path and a slash at the beginning of the segment
+			strcat(oldPath, segment + 1);
+		} else { // There's no slash at the end of the path and a slash at the beginning of the segment
+			strcat(oldPath, segment);
 		}
 	}
-	strcat(oldPath, segment);
 }
