@@ -6,7 +6,7 @@ There are some files which can be required quite often. Using this tool you can 
 Firstly you should clone this repository in any directory you want.
 
 ```
-git clone https://github.com/NikitaKemarskiy/zip-archiver.git
+git clone https://github.com/NikitaKemarskiy/fstore.git
 ```
 
 Then you should install it into your system using the next command:
