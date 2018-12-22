@@ -1,9 +1,10 @@
 #include <climits>
 #include <cstring>
+#include <climits>
 #include <unistd.h>
 #include "path.h"
 
-char* getExecPath() { // Function that gets fstore executable path
+char* getExecPath() { // Function that returns fstore executable path
 	char execPath[PATH_MAX];
 	int count = readlink("/proc/self/exe", execPath, PATH_MAX);
 	if (count > 0) { // Executable path was get
@@ -15,6 +16,25 @@ char* getExecPath() { // Function that gets fstore executable path
 		return ptr; // Return path without executable name at the end
 	} 
 	return "Error: can't get fstore executable path"; // Error: can't get fstore executable path
+}
+
+char* getLastSegment(char* fullPath) { // Function that returns last segment of specified path
+	int length = strlen(fullPath);
+	int index = 0;
+	char segment[PATH_MAX];
+	// Check if there's a slash at the end 
+	if (fullPath[length - 1] == '/') { // There's a slash at the end
+		length--; // Remove it
+	}
+	for (int i = length; i >= 0; i--) { // Find last slash in path
+		if (fullPath[i] == '/') { // Last slash was found
+			index = i; // Save the index
+			break;
+		}
+	}
+	strncpy(segment, fullPath + index + 1, length - index - 1);
+	char* ptr = segment;
+	return ptr; // Return last segment
 }
 
 void deleteLastSegment(char* newPath, char* oldPath) { // Function that deletes last segment from passed path
