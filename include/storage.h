@@ -2,6 +2,6 @@
 #define storage
 
 void saveFile(char*, char*);
-void getFile(char*);
+void getFile(char*, char*);
 
 #endif

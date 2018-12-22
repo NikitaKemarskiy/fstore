@@ -39,13 +39,19 @@ int main(int argc, char** argv) {
 
 	// Get passed command and process it
 	if (strcmp(userCommand, "save") == 0) { // Save command
-		char filePath[PATH_MAX];
 		fileName = parseSaveCommand(argc, argv); // Get passed filename
+		char filePath[PATH_MAX];
 		strcat(filePath, userPath);
 		addSegment(filePath, fileName);
-		saveFile(filePath, storagePath);
+		
+		saveFile(filePath, storagePath); // Save user's file in the storage
 	} else if (strcmp(userCommand, "get") == 0) { // Get command
 		fileName = parseGetCommand(argc, argv); // Get passed filename
+		char filePath[PATH_MAX];
+		strcat(filePath, userPath);
+		addSegment(filePath, fileName);
+		
+		getFile(filePath, storagePath); // Get user's file from the storage
 	} else if (strcmp(userCommand, "help") == 0) { // Help command
 		printHelp(helpFilePath); // Print help information
 	} else { // Error: invalid command
