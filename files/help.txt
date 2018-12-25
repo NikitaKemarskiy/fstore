@@ -1,7 +1,9 @@
-Usage: fstore [OPTION]... [FILE]...
+Usage: fstore [OPTIONS]... [FILE]...
 The FILE should be located in your current working directory
 
 Mandatory arguments to long options are mandatory for short options too.
   -s, --save		save your file into the storage
-  -g, --get		get your file from the storage to your current directory
+  -g, --get 		get your file from the storage to your current directory
+  -n, --name		if used with --save, sets new name to the saved file
+  -r, --remove		remove your file from the storage
   -h, --help		print help information

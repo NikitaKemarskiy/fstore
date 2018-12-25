@@ -29,6 +29,17 @@ void printOptions(int argc, char** argv) { // Function that prints console param
 	}
 }
 
+bool newNameDefined(int argc, char** argv) { // Function that returns true is new name is defined and false if it's not defined
+	for (int i = 0; i < argc; i++) {
+		if (strcmp(argv[i], "--name") == 0 || strcmp(argv[i], "-n") == 0) { // New name command was encountered
+			if (i < (argc - 1)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 char* getCommand(int argc, char** argv) { // Function that indicates which command was called by user
 	for (int i = 0; i < argc; i++) {
 		if (i < (argc - 1)) {
@@ -37,6 +48,9 @@ char* getCommand(int argc, char** argv) { // Function that indicates which comma
 			}
 			if (strcmp(argv[i], "--get") == 0 || strcmp(argv[i], "-g") == 0) { // Get command
 				return "get";
+			}
+			if (strcmp(argv[i], "--remove") == 0 || strcmp(argv[i], "-r") == 0) { // Remove command
+				return "remove";
 			}
 		}
 		if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0) { // Help command
@@ -57,6 +71,22 @@ char* parseSaveCommand(int argc, char** argv) { // Function that parses save com
 char* parseGetCommand(int argc, char** argv) { // Function that parses get command options
 	for (int i = 0; i < argc; i++) {
 		if (strcmp(argv[i], "--get") == 0 || strcmp(argv[i], "-g") == 0) { // Get command was encountered
+			return argv[i + 1];
+		}
+	}
+}
+
+char* parseRemoveCommand(int argc, char** argv) { // Function that parses get command options
+	for (int i = 0; i < argc; i++) {
+		if (strcmp(argv[i], "--remove") == 0 || strcmp(argv[i], "-r") == 0) { // Get command was encountered
+			return argv[i + 1];
+		}
+	}
+}
+
+char* parseNameCommand(int argc, char** argv) { // Function t
+	for (int i = 0; i < argc; i++) {
+		if (strcmp(argv[i], "--name") == 0 || strcmp(argv[i], "-n") == 0) { // Save command was encountered
 			return argv[i + 1];
 		}
 	}
