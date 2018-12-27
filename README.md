@@ -34,7 +34,6 @@ To insert your file from the storage to your current working directory use the n
 ```
 fstore --get [FILENAME]
 ```
-<<<<<<< HEAD
 
 To remove your file from the storage use the next command:
 
